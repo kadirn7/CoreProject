@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace DataAccessLayer.Repositories
 
         public void Add(Blog blog)
         {
+            //using (TContext context = new TContext())
             using var c = new Context();
             c.Add(blog);
             c.SaveChanges();
