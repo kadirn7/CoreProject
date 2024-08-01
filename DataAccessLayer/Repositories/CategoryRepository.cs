@@ -13,11 +13,7 @@ namespace DataAccessLayer.Repositories
     {
         Context c = new Context();
         
-        public void Add(Category category)
-        {
-            c.Add(category);
-            c.SaveChanges();
-        }
+       
 
         public void Delete(Category category)
         {
@@ -25,18 +21,24 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
         }
 
-        
+        public List<Category> GetAll()
+        {
+            return c.Categories.ToList();
+        }
 
-        public Category GetbyId(int id)
+       
+        public Category GetById(int id)
         {
             return c.Categories.Find(id);
         }
 
-        public List<Category> ListAll()
+        public void Insert(Category t)
         {
-            return c.Categories.ToList();
-
+            c.Add(t);
+            c.SaveChanges();
         }
+
+       
 
         public void Update(Category category)
         {

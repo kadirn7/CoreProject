@@ -1,40 +1,45 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.Repositories;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        CategoryRepository categoryRepository = new CategoryRepository();
-        public void CategoryAdd(Category category)
+        ICategoryDal _categoryDal;
+        public CategoryManager(ICategoryDal categoryDal)
         {
-            categoryRepository.Add(category);
+            _categoryDal = categoryDal;
         }
 
-        public void CategoryRemove(Category category)
+        
+        public void CategoryAdd(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Insert(category);
+        }
+
+        public void CategoryDelete(Category category)
+        {
+            _categoryDal.Delete(category);
         }
 
         public void CategoryUpdate(Category category)
         {
-            throw new NotImplementedException();
+           _categoryDal.Update(category);
         }
 
         public List<Category> GetAllCategories()
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetAll();
         }
 
         public Category GetById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetById(id);
         }
     }
 }

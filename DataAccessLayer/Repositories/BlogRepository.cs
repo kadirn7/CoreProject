@@ -14,13 +14,7 @@ namespace DataAccessLayer.Repositories
     internal class BlogRepository : IBlogDal
     {
 
-        public void Add(Blog blog)
-        {
-            //using (TContext context = new TContext())
-            using var c = new Context();
-            c.Add(blog);
-            c.SaveChanges();
-        }
+        
 
         public void Delete(Blog blog)
         {
@@ -29,18 +23,30 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
         }
 
-        public Blog GetbyId(int id)
+        public List<Blog> GetAll()
+        {
+            using var c = new Context();
+            return c.Blogs.ToList();
+
+        }
+
+
+
+        public Blog GetById(int id)
         {
             using var c = new Context();
             return c.Blogs.Find(id);
         }
 
-        public List<Blog> ListAll()
+        public void Insert(Blog t)
         {
+            //using (TContext context = new TContext())
             using var c = new Context();
-            return c.Blogs.ToList();
-            
+            c.Add(t);
+            c.SaveChanges();
         }
+
+      
 
         public void Update(Blog blog)
         {
