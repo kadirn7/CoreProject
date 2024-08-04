@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
         }
 
-        public List<T> GetAll()
+        public List<T> GetListAll()
         {
             using var c =new Context();
             return c.Set<T>().ToList();
@@ -35,7 +36,13 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
         }
 
-        public void Update(T t)
+		public List<T> GetListAll(Expression<Func<T, bool>> filter)
+		{
+			using var c = new Context();
+			return  c.Set<T>().Where(filter).ToList();
+		}
+
+		public void Update(T t)
         {
             using var c = new Context();
             c.Update(t);    

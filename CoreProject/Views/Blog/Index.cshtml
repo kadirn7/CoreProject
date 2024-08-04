@@ -1,4 +1,5 @@
 ﻿
+
 @using EntityLayer.Concrete
 @model List<Blog>
 
@@ -24,7 +25,7 @@
 								<ul class="blog-icons my-4">
 									<li>
 										<a href="#">
-											<i class="far fa-calendar-alt"></i> @item.CreateDate
+											<i class="far fa-calendar-alt"></i> @(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))
 										</a>
 									</li>
 									<li class="mx-2">
@@ -34,16 +35,16 @@
 									</li>
 									<li>
 										<a href="#">
-											<i class="fas fa-eye"></i> 0
+											<i class="fas fa-eye"></i> @item.Category.CategoryName
 										</a>
 									</li>
 
 								</ul>
 								<h5 class="card-title">
-									<a href="single.html">@item.Title</a>
+									<a href="/Blog/BlogReadAll/@item.Id">@item.Title</a>
 								</h5>
-								<p class="card-text mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt.. </p>
-								<a href="single.html" class="btn btn-primary read-m">Read More</a>
+								<p class="card-text mb-3">@item.Content.Substring(0,item.Content.Substring(0,110).LastIndexOf(" "))... </p>
+								<a href="/Blog/BlogReadAll/@item.Id" class="btn btn-primary read-m">Devamını Oku</a>
 							</div>
 						</div>
 					}
