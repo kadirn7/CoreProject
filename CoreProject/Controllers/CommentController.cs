@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreProject.Controllers
@@ -22,9 +23,9 @@ namespace CoreProject.Controllers
 		{
 			return PartialView();
 		}
-		public PartialViewResult CommentListByBlog()
-		{
-			var values = _commentManager.Getlist();
+		public PartialViewResult CommentListByBlog(int blogId)
+        {
+			var values = _commentManager.Getlist( blogId);
 			return PartialView(values);
 		}
 	}

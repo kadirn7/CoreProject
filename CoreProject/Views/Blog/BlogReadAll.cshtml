@@ -90,7 +90,16 @@
                             <a id="read-less-@item.Id" href="javascript:void(0);" class="btn btn-primary read-m" onclick="showShortContent('@item.Id')" style="display: none;">Metni Küçült</a>
                         </div>
                     }
-                    @await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml")
+                    @foreach (var item in Model)
+                    {
+                        <div class="blog-grid-top">
+                            <!-- Blog içeriği -->
+                            
+                            @await Component.InvokeAsync("CommentListByBlog", new { blogId = item.Id })
+                        </div>
+                    }
+
+                    @*@await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml") *@
 
                     @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")
                     
