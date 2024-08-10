@@ -1,4 +1,5 @@
 # CoreProject
+![CoreProject](https://github.com/user-attachments/assets/7f46f735-a21f-447d-b993-a6b6eeeb0b16)
 
 **CoreProject** projesi, **ASP.NET Core MVC** ve **ASP.NET Core Web API** kullanılarak geliştirilmiş, katmanlı mimari (N-layer architecture) prensiplerine uygun bir web uygulamasıdır. Proje, SOLID prensiplerine uygun olarak tasarlanmış ve geliştirilmeye devam etmektedir.
 
